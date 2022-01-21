@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row">
+    <div *ngFor="let hero of heroes" class="cards col-3">
+      <mat-card class="card">
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title>{{ hero.name }}</mat-card-title>
+          <mat-card-subtitle class="card"> {{ hero.tags }}</mat-card-subtitle>
+        </mat-card-header>
+        <img
+          class="heroImage"
+          mat-card-image
+          src="{{ hero.image.full }}"
+          alt="Photo of a Shiba Inu"
+          width="300"
+          height="400"
+        />
+        <mat-card-content>
+          <p>
+            <mat-card-subtitle class="subt">
+              {{ hero.title }}</mat-card-subtitle
+            >
+            {{
+              hero.blurb.length > 100
+                ? (hero.blurb | slice: 0:100) + ".."
+                : hero.blurb
+            }}
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <a routerLink="/detail/{{ hero.id }}">
+            <button mat-raised-button color="primary">Primary</button></a
+          >
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>
